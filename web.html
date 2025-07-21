@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Board Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header, footer {
+      background: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+    }
+    section {
+      padding: 20px;
+    }
+    .job-card, form, .dashboard {
+      background: white;
+      padding: 15px;
+      margin: 10px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkgreen;
+    }
+    h2 {
+      color: #333;
+    }
+    #searchBar {
+      width: 60%;
+      margin: 0 auto 20px;
+      display: block;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Job Board</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#employer">Employer</a>
+      <a href="#candidate">Candidate</a>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to the Job Board</h2>
+    <div class="job-card">
+      <h3>Frontend Developer</h3>
+      <p>Google - Bengaluru</p>
+      <a href="#jobdetail">View Details</a>
+    </div>
+    <div class="job-card">
+      <h3>Data Analyst</h3>
+      <p>Amazon - Hyderabad</p>
+      <a href="#jobdetail">View Details</a>
+    </div>
+  </section>
+
+  <!-- Job Listings -->
+  <section id="jobs">
+    <h2>Browse Jobs</h2>
+    <input type="text" id="searchBar" placeholder="Search jobs..." onkeyup="searchJobs()">
+    <div id="jobList">
+      <div class="job-card">
+        <h3>Software Engineer</h3>
+        <p>Infosys - Pune</p>
+        <a href="#apply">Apply Now</a>
+      </div>
+      <div class="job-card">
+        <h3>UI/UX Designer</h3>
+        <p>Flipkart - Bangalore</p>
+        <a href="#apply">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Job Detail -->
+  <section id="jobdetail">
+    <h2>Job Detail: Software Engineer</h2>
+    <div class="job-card">
+      <p><strong>Company:</strong> Infosys</p>
+      <p><strong>Location:</strong> Pune</p>
+      <p><strong>Description:</strong> Work on backend APIs and cloud infrastructure.</p>
+      <a href="#apply"><button>Apply for this Job</button></a>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="apply">
+    <h2>Apply Now</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="file" accept=".pdf,.doc" required>
+      <textarea placeholder="Cover Letter (optional)"></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+  </section>
+
+  <!-- Employer Dashboard -->
+  <section id="employer">
+    <h2>Employer Dashboard</h2>
+    <div class="dashboard">
+      <form>
+        <input type="text" placeholder="Job Title">
+        <input type="text" placeholder="Company Name">
+        <input type="text" placeholder="Location">
+        <textarea placeholder="Job Description"></textarea>
+        <button type="submit">Post Job</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Candidate Dashboard -->
+  <section id="candidate">
+    <h2>Candidate Dashboard</h2>
+    <div class="dashboard">
+      <form>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="file" accept=".pdf,.doc">
+        <button type="submit">Update Profile</button>
+      </form>
+      <h3>My Applications</h3>
+      <ul>
+        <li>Software Engineer - Infosys (Status: Submitted)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Job Board. All rights reserved.</p>
+  </footer>
+
+  <!-- JS Search Function -->
+  <script>
+    function searchJobs() {
+      const input = document.getElementById("searchBar").value.toLowerCase();
+      const jobs = document.querySelectorAll("#jobList .job-card");
+
+      jobs.forEach(job => {
+        const text = job.textContent.toLowerCase();
+        job.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
